@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+BOOK=${1?"missing book name ..."}
+BOOKLINK=${2?"missing link of book name ..."}
+#https://zh.m.wikisource.org/wiki/聖經_(和合本)
+GETBWSK=$HOME/bible2zhtts/getbwsk.js
+GETLINK=$HOME/bible2zhtts/getlinks.js
+[ -d $BOOK ] || mkdir $BOOK
+cd $BOOK
+#$GETBWSK $BOOKLINK | sed -e 's#\.mw-par.*\}##g' -e '/^Public domain/,$ d' > converted.txt
+$GETBWSK $BOOKLINK > all.txt

@@ -1,0 +1,10 @@
+mv xx001 001.txt
+mv xx002 002.txt
+mv xx003 003.txt
+mv xx004 004.txt
+mv xx005 005.txt
+mv xx006 006.txt
+mv xx007 007.txt
+mv xx008 008.txt
+mv xx009 009.txt
+mv xx010 010.txt

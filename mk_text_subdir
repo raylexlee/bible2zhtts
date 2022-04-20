@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+[ -f xx001 ] && bash raylex.sh
+[ -d text ] || mkdir text
+for i in $(ls [0-9]*txt)
+do
+sed -e '/^\ *$/ d' -e 's#編輯##' < $i > text/$i
+done
+sed 's#編輯##' < coverparameters.txt > text/coverparameters.txt
+

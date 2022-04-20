@@ -1,23 +1,13 @@
 #!/usr/bin/env bash
 BOOK=${1?"missing book name ..."}
-BOOKLINK=${2?"missing link of book name ..."}
-#https://zh.m.wikisource.org/wiki/聖經_(和合本)
+BIBLE=https://zh.m.wikisource.org/wiki/聖經_\(和合本\)
+BOOKLINK=$BIBLE/$BOOK
 GETBWSK=$HOME/bible2zhtts/getbwsk.js
 GETLINK=$HOME/bible2zhtts/getlinks.js
 [ -d $BOOK ] || mkdir $BOOK
 cd $BOOK
 $GETBWSK $BOOKLINK | grep ^[第0123456789] > converted.txt
-../prepare_coverparameters ^[第0123456789]
+../prepare_coverparameters
 ../mov_with
-bash raylex.sh
-ZHTTS=$HOME/raylexlee.github.io/zhtts/text
-if [[ -d $ZHTTS/$BOOK ]]; then :; else
-  mkdir $ZHTTS/$BOOK
-fi
-for i in $(ls [0-9]*txt)
-do
-sed '/^\ *$/ d' < $i > $ZHTTS/$BOOK/$i
-done
-#cp coverparameters.txt $ZHTTS/$BOOK/
-sed 's/△//' < coverparameters.txt > $ZHTTS/$BOOK/coverparameters.txt
-#sed 's/[〈〉〔〕]//g' < coverparameters.txt > $ZHTTS/$BOOK/coverparameters.txt
+../mk_text_subdir 
+#~/move2zhtts 

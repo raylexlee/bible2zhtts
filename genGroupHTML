@@ -4,7 +4,7 @@ for TITLE in "${TESTAMENT[@]}"
 do
 HTML=$TITLE.html
 sed "s/李潤明/$TITLE/" < head_group_template.txt > $HTML
-grep "^$TITLE" ../bible.txt  | sed 's#^[舊新]約\s\([^　]*\).*#\1#' \
+grep "^$TITLE" bible.txt  | sed 's#^[舊新]約\s\([^　]*\).*#\1#' \
  | awk '{printf("<li><a href='"'%s.html'"'>%s</a></li>\n",$1,$1);}' \
  >> $HTML
 cat tail_group_template.txt >> $HTML

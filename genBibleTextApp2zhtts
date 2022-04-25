@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 for BOOK in $(grep  ^[舊新]約 bible.txt | sed 's#^[舊新]約\s\([^　]*\).*#\1#')
 do
-#./zh_bible_ws $BOOK
-cp -a  $BOOK/text $HOME/raylexlee.github.io/zhtts/text/$BOOK
+cd $HOME/raylexlee.github.io/zhtts
+./make_zhtextapp_html.txt $BOOK
 done
